@@ -148,8 +148,8 @@ namespace android {
             if (fd == -1) {
                 ALOGE("Open %s failed : %s", path.string(), strerror(errno));
             } else {
-                mAudioEvents.push_back(std::make_pair(in_file->d_name, fd));
-                mAudioEventsStatus.push_back(std::make_pair(in_file->d_name, 0));
+                mAudioEvents.push_back(std::make_pair(String8(in_file->d_name), fd));
+                mAudioEventsStatus.push_back(std::make_pair(String8(in_file->d_name), 0));
                 ALOGD("event status mAudioEventsStatus= %s",
                           mAudioEventsStatus[0].first.string());
             }
