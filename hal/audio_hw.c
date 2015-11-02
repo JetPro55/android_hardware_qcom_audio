@@ -2762,12 +2762,14 @@ static int adev_open_output_stream(struct audio_hw_device *dev,
         check_and_set_gapless_mode(adev);
 
     } else if (out->flags & AUDIO_OUTPUT_FLAG_INCALL_MUSIC) {
+#ifdef INCALL_MUSIC_ENABLED
         ret = voice_check_and_set_incall_music_usecase(adev, out);
         if (ret != 0) {
             ALOGE("%s: Incall music delivery usecase cannot be set error:%d",
                   __func__, ret);
             goto error_open;
         }
+#endif
     } else  if (out->devices == AUDIO_DEVICE_OUT_TELEPHONY_TX) {
         if (config->sample_rate == 0)
             config->sample_rate = AFE_PROXY_SAMPLING_RATE;

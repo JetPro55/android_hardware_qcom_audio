@@ -309,7 +309,7 @@ int voice_check_and_stop_incall_rec_usecase(struct audio_device *adev,
 
     return ret;
 }
-
+#ifdef INCALL_MUSIC_ENABLED
 int voice_check_and_set_incall_music_usecase(struct audio_device *adev,
                                              struct stream_out *out)
 {
@@ -323,6 +323,7 @@ int voice_check_and_set_incall_music_usecase(struct audio_device *adev,
 
     return ret;
 }
+#endif
 
 int voice_set_mic_mute(struct audio_device *adev, bool state)
 {
